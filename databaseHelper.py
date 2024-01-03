@@ -22,16 +22,19 @@ def channels():
     channels = run_query('SELECT DISTINCT channel FROM Videos ORDER BY channel')
     return jsonify([channel[0] for channel in channels])
 
-@app.route('/channel/<channel>')
-def channel(channel):
-    videos = run_query('SELECT * FROM Videos WHERE channel = ? ORDER BY channel', (channel,))
-    return render_template('channel.html', videos=videos, channel=channel)
+@app.route('/channel/<channel>', defaults={'page': 1})
+@app.route('/channel/<channel>/<int:page>')
+def channel(channel, page):
+    # rest of your function
+    offset = (page - 1) * 20
+    videos = run_query('SELECT * FROM Videos WHERE channel = ? ORDER BY upload_date DESC LIMIT 20 OFFSET ?', (channel, offset))
+    return render_template('channel.html', videos=videos, channel=channel, page=page)
 
 @app.route('/videos')
 def videos():
-  cur = run_query('SELECT * FROM Videos')
-  videos = [dict(id=row[0], title=row[1], category=row[2], youtube_link=row[3], upload_date=row[4]) for row in cur.fetchall()]
-  return jsonify(videos)
+    cur = run_query('SELECT * FROM Videos')
+    videos = [dict(id=row[0], title=row[1], category=row[2], youtube_link=row[3], upload_date=row[4]) for row in cur]
+    return jsonify(videos)
 
 @app.route('/video/<int:id>')
 def video(id):
@@ -52,10 +55,12 @@ def categories():
     categories = run_query('SELECT DISTINCT category FROM Videos ORDER BY category')
     return jsonify([category[0] for category in categories])
 
-@app.route('/category/<category>')
-def category(category):
-    videos = run_query('SELECT * FROM Videos WHERE category = ? ORDER BY category', (category,))
-    return render_template('category.html', videos=videos, category=category)
+@app.route('/category/<category>', defaults={'page': 1})
+@app.route('/category/<category>/<int:page>')
+def category(category, page):
+    offset = (page - 1) * 20
+    videos = run_query('SELECT * FROM Videos WHERE category = ? ORDER BY upload_date DESC LIMIT 20 OFFSET ?', (category, offset))
+    return render_template('category.html', videos=videos, category=category, page=page)
 
 if __name__ == '__main__':
     app.run(debug=True)

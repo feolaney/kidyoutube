@@ -97,6 +97,27 @@ nav ul li ul li a:hover {
     }
 }
 
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.pagination a {
+    color: #2F4F4F;
+    padding: 10px 20px;
+    text-decoration: none;
+    border: 1px solid #2F4F4F;
+    margin: 0 10px;
+    transition: all 0.3s ease-out;
+}
+
+.pagination a:hover {
+    background-color: #2F4F4F;
+    color: #fff;
+}
+
 table#videos {
     width: 100%;
 }

@@ -28,7 +28,20 @@ clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
             </div>
         {% endfor %}
     </section>
+<!-- Previous page -->
+<div class="pagination">
+    {% if page > 1 %}
+        <a href="{{ url_for('category', category=category, page=page - 1) }}">Previous Page</a>
+    {% endif %}
 
+    <!-- Current page -->
+    Page {{ page }}
+
+    <!-- Next page -->
+    {% if videos|length >= 20 %}
+        <a href="{{ url_for('category', category=category, page=page + 1) }}">Next Page</a>
+    {% endif %}
+</div>
 
 </body>
 </html>
