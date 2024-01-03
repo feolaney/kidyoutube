@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="/static/styles.css">
+    <!-- include jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- include your scripts.js -->
+    <script src="/static/scripts.js"></script>
+</head>
+<body>
+    <header>
+        <h1>All Videos</h1>
+        {% include 'navbar.html' %}
+    </header>
+    <div id="grouped-videos">
+        <table id="videos">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>YouTube Link</th>
+                    <th>Upload Date</th>
+                    <th>Channel</th>
+                    <th>YouTube ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for video in videos %}
+                <tr>
+                    <td><a href="/video/{{ video[0] }}">{{ video[1] }}</a></td>
+                    <td>{{ video[2] }}</td>
+                    <td>{{ video[3] }}</td>
+                    <td>{{ video[4] }}</td>
+                    <td>{{ video[5] }}</td>
+                    <td>{{ video[6] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

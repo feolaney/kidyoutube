@@ -97,6 +97,18 @@ nav ul li ul li a:hover {
     }
 }
 
+table#videos {
+    width: 100%;
+}
+
+table#videos th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #2F4F4F;
+    color: white;
+}
+
 footer {
     background-color: #2F4F4F;
     text-align: center;
