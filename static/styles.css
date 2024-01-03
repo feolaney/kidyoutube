@@ -1,0 +1,108 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+}
+
+header {
+    background-color: #2F4F4F;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+header h1 {
+    margin: 0;
+    display: inline;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    position: relative;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    padding: 5px 10px;
+}
+
+nav ul li:hover {
+    background-color: #696969;
+}
+
+nav ul li ul {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    padding: 10px;
+    min-width: 600px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+nav ul li:hover ul {
+    display: block;
+}
+
+nav ul li ul li {
+    display: block;
+    background-color: #fff;
+    color: #000;
+    padding: 5px;
+    margin-top: 5px;
+}
+
+nav ul li ul li:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+
+nav ul li ul li a {
+    color: #000;
+}
+
+nav ul li ul li a:hover {
+    color: #2F4F4F;
+}
+
+#new-videos {
+    margin: 20px;
+}
+
+#grouped-videos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Horizontally center items */
+    align-items: center; /* Vertically center items */
+}
+
+.video-item {
+    flex-basis: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Horizontally center content within each item */
+    justify-content: center; /* Vertically center content within each item */
+}
+  
+@media screen and (min-width: 600px) { /* Adjust the min-width according to your needs */
+    .video-item {
+        flex-basis: 48%;  /* Roughly 100% divided by 2, with a little space for margins/paddings */
+    }
+}
+
+footer {
+    background-color: #2F4F4F;
+    text-align: center;
+    padding: 20px;
+    color: #fff;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

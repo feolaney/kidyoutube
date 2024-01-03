@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Kid's Videos</title>
+        <link rel="stylesheet" type="text/css" href="/static/styles.css">
+        <!-- include jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- include your scripts.js -->
+        <script src="/static/scripts.js"></script>
+    </head>
+<body>
+    <header>
+        <h1>Learning Videos</h1>
+        <nav>
+            <ul id="menu">
+                <li id="newVideos"><a href="/">New Videos </a></li>
+                <li id="videoCategories"><a href="#">Categories &#x25BE;</a>
+                    <ul id="categoriesDropdown">
+                        <!-- Categories will be loaded here -->
+                    </ul>
+                </li>
+                <li id="videoChannels">
+                    <a href="#">Channels &#x25BE;</a>
+                    <ul id="channelsDropdown">
+                        <!-- Channels will be loaded here -->
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="new-videos">
+        <h2>New Videos</h2>
+        {% for video in videos %}
+            <div>
+                <h3>{{ video[1] }}</h3> <!-- This line displays the video title -->
+                <p>Category: {{ video[2] }}  |  Channel: {{ video[5] }}</p> <!-- This line displays the video category -->
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ 
+video[3].split('watch?v=')[-1].split('/')[0] }}?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
+encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <!-- The line above embeds the YouTube video player for this video -->
+                <p>Uploaded on: {{ video[4] }}</p> <!-- This line displays the video upload date -->
+            </div>
+            <hr>
+        {% endfor %}
+    </section>
+
+</body>
+</html>

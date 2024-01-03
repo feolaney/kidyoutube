@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{ category }} category</title> <!-- Update title to display the category name -->
+        <link rel="stylesheet" type="text/css" href="/static/styles.css">
+        <!-- include jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- include your scripts.js -->
+        <script src="/static/scripts.js"></script>
+    </head>
+<<body>
+    <header>
+        <h1>Learning Videos</h1>
+        <nav>
+            <ul id="menu">
+                <li id="newVideos"><a href="/">New Videos </a></li>
+                <li id="videoCategories"><a href="#">Categories &#x25BE;</a>
+                    <ul id="categoriesDropdown">
+                        <!-- Categories will be loaded here -->
+                    </ul>
+                </li>
+                <li id="videoChannels">
+                    <a href="#">Channels &#x25BE;</a>
+                    <ul id="channelsDropdown">
+                        <!-- Channels will be loaded here -->
+                        {% for channel in channels %}
+                            <li><a href="#">{{ channel }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <!-- rest of your file content -->
+    <h2>{{ channel }} videos</h2>
+    <hr>
+    <section id="grouped-videos">        
+        {% for video in videos %}
+            <div class="video-item">
+                <h3>{{ video[1] }}</h3>
+                <p>Category: {{ video[2] }}  |  Channel: {{ video[5] }}</p>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ 
+video[3].split('watch?v=')[-1].split('/')[0] }}?rel=0" frameborder="0" allow="accelerometer; autoplay; 
+clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <p>Uploaded on: {{ video[4] }}</p>
+            </div>
+        {% endfor %}
+    </section>
+
+
+</body>
+</html>
