@@ -15,7 +15,7 @@ def get_categories(database_path):
     return categories
 
 def main():
-    database_path = '/Users/kamila/Kids Youtube Videos/kidsvideos.db'
+    database_path = '/Users/kamila/kidyoutube/kidsvideos.db'
     categories = get_categories(database_path)
     for category in categories:
         print(category)

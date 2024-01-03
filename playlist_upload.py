@@ -59,7 +59,7 @@ def main():
     category = sys.argv[2]     # get category from the command line
     video_ids = get_playlist_videos(playlist_id)
 
-    database_path = '/Users/kamila/Kids Youtube Videos/kidsvideos.db'
+    database_path = '/Users/kamila/kidyoutube/kidsvideos.db'
   
     for video_id in video_ids:
         info = get_video_info(video_id)

@@ -47,7 +47,7 @@ def main():
         print("Missing parameter: youtubeID")
         sys.exit(1)
 
-    database_path = '/Users/kamila/Kids Youtube Videos/kidsvideos.db'
+    database_path = '/Users/kamila/kidyoutube/kidsvideos.db'
 
     add_video(database_path, title, category, channel, youtubeID)
     print("Video added successfully.")

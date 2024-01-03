@@ -14,7 +14,7 @@ def get_videos(database_path):
     return videos
 
 def main():
-    database_path = '/Users/kamila/Kids Youtube Videos/kidsvideos.db'
+    database_path = '/Users/kamila/kidyoutube/kidsvideos.db'
     videos = get_videos(database_path)
     current_category = ''
     for video in videos:

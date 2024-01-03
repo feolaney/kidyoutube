@@ -4,7 +4,7 @@ import sqlite3
 app = Flask(__name__)
 
 def run_query(query, params=()):
-  conn = sqlite3.connect('/Users/kamila/Kids Youtube Videos/kidsvideos.db')
+  conn = sqlite3.connect('/Users/kamila/kidyoutube/kidsvideos.db')
   cur = conn.cursor()
   cur.execute(query, params)
   conn.commit()
