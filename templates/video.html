@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <!-- Include CSS stylesheet -->
-    <link rel="stylesheet" href="/static/styles.css">
-    <!-- Display video title in the page title -->
+    <head>
+        <!-- Include CSS stylesheet -->
+        <link rel="stylesheet" type="text/css" href="/static/styles.css">
+        <!-- Include jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- Include your scripts.js -->
+        <script src="/static/scripts.js"></script>
+        <!-- Set the page title -->
     <title>{{ title }}</title>
 </head>
 <body>
+    <header>
+        <h1>Learning Videos</h1>
+        {% include 'navbar.html' %}
+    </header>
     <!-- Display the video title -->
     <h1>{{ title }}</h1>
     <!-- Display the video category -->
