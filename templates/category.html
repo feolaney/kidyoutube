@@ -1,47 +1,54 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>{{ category }} category</title> <!-- Update title to display the category name -->
+        <!-- Include CSS stylesheet -->
         <link rel="stylesheet" type="text/css" href="/static/styles.css">
-        <!-- include jQuery -->
+        <!-- Include jQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <!-- include your scripts.js -->
+        <!-- Include your scripts.js -->
         <script src="/static/scripts.js"></script>
+        <!-- Update title to display the category name -->
+        <title>{{ category }} category</title>
     </head>
-<<body>
-    <header>
-        <h1>Learning Videos</h1>
-        {% include 'navbar.html' %}
-    </header>
-    <!-- rest of your file content -->
-    <h2>{{ category }} videos</h2>
-    <hr>
-    <section id="grouped-videos">        
-        {% for video in videos %}
-            <div class="video-item">
-                <h3>{{ video[1] }}</h3>
-                <p>Category: {{ video[2] }}  |  Channel: {{ video[5] }}</p>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ 
-video[3].split('watch?v=')[-1].split('/')[0] }}?rel=0" frameborder="0" allow="accelerometer; autoplay; 
-clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <p>Uploaded on: {{ video[4] }}</p>
-            </div>
-        {% endfor %}
-    </section>
-<!-- Previous page -->
-<div class="pagination">
-    {% if page > 1 %}
-        <a href="{{ url_for('category', category=category, page=page - 1) }}">Previous Page</a>
-    {% endif %}
-
-    <!-- Current page -->
-    Page {{ page }}
-
-    <!-- Next page -->
-    {% if videos|length >= 20 %}
-        <a href="{{ url_for('category', category=category, page=page + 1) }}">Next Page</a>
-    {% endif %}
-</div>
-
-</body>
+    
+    <body>
+        <!-- HTML header with page title and navbar -->
+        <header>
+            <h1>Learning Videos</h1>
+            {% include 'navbar.html' %}
+        </header>
+        <!-- Header indicating the category of videos -->
+        <h2>{{ category }} videos</h2>
+        <hr>
+        <!-- Section for videos grouped under the same category -->
+        <section id="grouped-videos">        
+            {% for video in videos %}
+                <div class="video-item">
+                    <!-- Display video title -->
+                    <h3>{{ video[1] }}</h3>
+                    <!-- Display video category and channel -->
+                    <p>Category: {{ video[2] }}  |  Channel: {{ video[5] }}</p>
+                    <!-- Videos are embedded from YouTube using their links -->
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ 
+                    video[3].split('watch?v=')[-1].split('/')[0] }}?rel=0" frameborder="0" allow="accelerometer; autoplay; 
+                    clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <!-- Display video upload date -->
+                    <p>Uploaded on: {{ video[4] }}</p>
+                </div>
+            {% endfor %}
+        </section>
+        <!-- Pagination section -->
+        <div class="pagination">
+            <!-- Button to go to the previous page if exists -->
+            {% if page > 1 %}
+                <a href="{{ url_for('category', category=category, page=page - 1) }}">Previous Page</a>
+            {% endif %}
+            <!-- Display the current page number -->
+            Page {{ page }}
+            <!-- Button to go to the next page if exists -->
+            {% if videos|length >= 20 %}
+                <a href="{{ url_for('category', category=category, page=page + 1) }}">Next Page</a>
+            {% endif %}
+        </div>
+    </body>
 </html>
