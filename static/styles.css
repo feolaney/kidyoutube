@@ -39,7 +39,7 @@ nav ul li a {
 }
 
 nav ul li:hover {
-    background-color: #696969;
+    background-color: #dad9d9;
 }
 
 /* Navigation bar - Dropdown style */
@@ -65,7 +65,7 @@ nav ul li ul li {
     margin-top: 5px;
 }
 
-nav ul li ul li:nth-child(odd) {
+nav ul li ul li {
     background-color: #f2f2f2;
 }
 
