@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{{ title }}</title>
+    <!-- Include CSS stylesheet -->
     <link rel="stylesheet" href="/static/styles.css">
+    <!-- Display video title in the page title -->
+    <title>{{ title }}</title>
 </head>
 <body>
+    <!-- Display the video title -->
     <h1>{{ title }}</h1>
+    <!-- Display the video category -->
     <p>Category: {{ category }}</p>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ video_id }}?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <!-- Embed the video player using the video_id -->
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ video_id }}?rel=0" frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen></iframe>
+    <!-- Display the video upload date -->
     <p>Date Uploaded: {{ upload_date }}</p>
+    <!-- Back button to return to previous page -->
     <a href="/">Back</a>
 </body>
 </html>
