@@ -62,5 +62,16 @@ def category(category, page):
     videos = run_query('SELECT * FROM Videos WHERE category = ? ORDER BY upload_date DESC LIMIT 20 OFFSET ?', (category, offset))
     return render_template('category.html', videos=videos, category=category, page=page)
 
+@app.route('/search')
+def search():
+  search_term = request.args.get('q', '')
+  # Execute search query with a wildcard match.
+  query = 'SELECT * FROM Videos WHERE title LIKE ? LIMIT 10'
+  # '%' is a wildcard symbol matching any number of characters, 
+  # putting it at the beginning and end of search_term will match titles containing search_term anywhere.
+  results = run_query(query, ('%' + search_term + '%', ))
+  # Send results back as JSON
+  return jsonify(results)
+
 if __name__ == '__main__':
     app.run(debug=True)

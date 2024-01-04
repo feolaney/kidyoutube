@@ -1,4 +1,3 @@
-// Ensures that the script doesn't run until the full document model is ready
 $(document).ready(function(){
     // Fetches the videos in JSON format from '/videos' URL and loops over them
     $.getJSON('/videos', function(videos) {
@@ -22,5 +21,27 @@ $(document).ready(function(){
             // Appends an HTML list item containing each channel link to the 'channelsDropdown' element
             $('#channelsDropdown').append('<li><a href="/channel/' + channel + '">' + channel + '</a></li>');
         });
+    });
+
+    // Setup a timer
+    var delayTimer;
+
+    $('#search-input').on('input', function() {
+        var search_term = $(this).val();
+
+        // Clear the existing timer
+        clearTimeout(delayTimer);
+
+        // Set a new timer
+        delayTimer = setTimeout(function() {
+            $.getJSON('/search', { 'q': search_term }, function(videos) {
+                // Clear current results
+                $('#search-results').empty();
+                // Add new results
+                $.each(videos, function(i, video) {
+                    $('#search-results').append('<li><a href="/video/' + video[0] + '">' + video[1] + '</a></li>');
+                });
+            });
+        }, 250); // Will do the AJAX stuff after 250 ms, or 1/4 s
     });
 });
