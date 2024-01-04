@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <!-- Include CSS stylesheet -->
     <link rel="stylesheet" type="text/css" href="/static/styles.css">
-    <!-- include jQuery -->
+    <!-- Include jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- include your scripts.js -->
+    <!-- Include your scripts.js -->
     <script src="/static/scripts.js"></script>
 </head>
 <body>
+    <!-- Header with page title and navigation bar -->
     <header>
         <h1>All Videos</h1>
         {% include 'navbar.html' %}
     </header>
+    <!-- Create a table to display video data -->
     <div id="grouped-videos">
         <table id="videos">
+            <!-- Table header row -->
             <thead>
                 <tr>
                     <th>Title</th>
@@ -24,9 +28,11 @@
                     <th>YouTube ID</th>
                 </tr>
             </thead>
+            <!-- Table body: Iterate through the videos data -->
             <tbody>
                 {% for video in videos %}
                 <tr>
+                    <!-- Data row for each video -->
                     <td><a href="/video/{{ video[0] }}">{{ video[1] }}</a></td>
                     <td>{{ video[2] }}</td>
                     <td>{{ video[3] }}</td>
