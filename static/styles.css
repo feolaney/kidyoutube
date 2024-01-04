@@ -1,3 +1,4 @@
+/* Defining body styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -5,6 +6,7 @@ body {
     background-color: #fff;
 }
 
+/* Defining header styles */
 header {
     background-color: #2F4F4F;
     padding: 10px 20px;
@@ -17,6 +19,7 @@ header h1 {
     display: inline;
 }
 
+/* Navigation bar styles */
 nav ul {
     list-style-type: none;
     padding: 0;
@@ -39,6 +42,7 @@ nav ul li:hover {
     background-color: #696969;
 }
 
+/* Navigation bar - Dropdown style */
 nav ul li ul {
     display: none;
     position: absolute;
@@ -52,6 +56,7 @@ nav ul li:hover ul {
     display: block;
 }
 
+/* Navigation bar - Define styles for child elements of dropdown */
 nav ul li ul li {
     display: block;
     background-color: #fff;
@@ -72,31 +77,35 @@ nav ul li ul li a:hover {
     color: #2F4F4F;
 }
 
+/* New videos section */
 #new-videos {
     margin: 20px;
 }
 
+/* Video grid styles */
 #grouped-videos {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Horizontally center items */
-    align-items: center; /* Vertically center items */
+    justify-content: center;
+    align-items: center;
 }
 
 .video-item {
     flex-basis: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Horizontally center content within each item */
-    justify-content: center; /* Vertically center content within each item */
+    align-items: center;
+    justify-content: center;
 }
-  
-@media screen and (min-width: 600px) { /* Adjust the min-width according to your needs */
+
+/* Media queries for larger screen grids */
+@media screen and (min-width: 600px) {
     .video-item {
-        flex-basis: 48%;  /* Roughly 100% divided by 2, with a little space for margins/paddings */
+        flex-basis: 48%;
     }
 }
 
+/* Pagination styles */
 .pagination {
     display: flex;
     justify-content: center;
@@ -118,6 +127,7 @@ nav ul li ul li a:hover {
     color: #fff;
 }
 
+/* Styles for video table */
 table#videos {
     width: 100%;
 }
@@ -130,6 +140,7 @@ table#videos th {
     color: white;
 }
 
+/* Footer styles */
 footer {
     background-color: #2F4F4F;
     text-align: center;
