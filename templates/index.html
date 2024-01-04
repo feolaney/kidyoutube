@@ -1,30 +1,37 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Kid's Videos</title>
+        <!-- Include CSS stylesheet -->
         <link rel="stylesheet" type="text/css" href="/static/styles.css">
-        <!-- include jQuery -->
+        <!-- Include jQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <!-- include your scripts.js -->
+        <!-- Include your scripts.js -->
         <script src="/static/scripts.js"></script>
+        <!-- Set the page title -->
+        <title>Kid's Videos</title>
     </head>
 <body>
+    <!-- Header with page title and navigation bar -->
     <header>
         <h1>New Learning Videos</h1>
         {% include 'navbar.html' %}
     </header>
-
+    <!-- Section for new videos -->
     <section id="new-videos">
         <h2>New Videos</h2>
+        <!-- Iterate through the videos data -->
         {% for video in videos %}
             <div>
-                <h3>{{ video[1] }}</h3> <!-- This line displays the video title -->
-                <p>Category: {{ video[2] }}  |  Channel: {{ video[5] }}</p> <!-- This line displays the video category -->
+                <!-- Display video title -->
+                <h3>{{ video[1] }}</h3> 
+                <!-- Display video category and channel -->
+                <p>Category: {{ video[2] }}  |  Channel: {{ video[5] }}</p> 
+                <!-- Videos are embedded from YouTube using their links -->
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ 
-video[3].split('watch?v=')[-1].split('/')[0] }}?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
-encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <!-- The line above embeds the YouTube video player for this video -->
-                <p>Uploaded on: {{ video[4] }}</p> <!-- This line displays the video upload date -->
+                video[3].split('watch?v=')[-1].split('/')[0] }}?rel=0" frameborder="0" allow="accelerometer; autoplay; 
+                clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <!-- Display video upload date -->
+                <p>Uploaded on: {{ video[4] }}</p>
             </div>
             <hr>
         {% endfor %}
