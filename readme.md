@@ -58,7 +58,7 @@ How to have running session in background with screens:
 
 ## TODO:
 
- - Add Search Functionality
+ - Protect against sql injection 
  - Move iOS Shortcut functionality into Python scripts for add/delete
     - Create selection list for when deleting that will be based on a wildcard search
  - Create setup instructions for setting up project and iOS shortcuts
