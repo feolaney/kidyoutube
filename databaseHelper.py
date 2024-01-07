@@ -61,7 +61,7 @@ def video(id):
 # Define route for database display
 @app.route('/database')
 def database():
-    videos = run_query('SELECT * FROM Videos')
+    videos = run_query('SELECT * FROM Videos ORDER BY upload_date DESC')
     return render_template('database.html', videos=videos)
 
 # Define app route for categories page, which returns JSON format categories
