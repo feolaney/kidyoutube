@@ -19,23 +19,23 @@
     <!-- Section for new videos -->
     <section id="new-videos">
         <h2>New Videos</h2>
-        <!-- Iterate through the videos data -->
-        {% for video in videos %}
-            <div>
-                <!-- Display video title -->
-                <h3>{{ video[1] }}</h3> 
-                <!-- Display video category and channel -->
-                <p>Category: {{ video[2] }}  |  Channel: {{ video[5] }}</p> 
-                <!-- Videos are embedded from YouTube using their links -->
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ 
-                video[3].split('watch?v=')[-1].split('/')[0] }}?rel=0" frameborder="0" allow="accelerometer; autoplay; 
-                clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <!-- Display video upload date -->
-                <p>Uploaded on: {{ video[4] }}</p>
-            </div>
-            <hr>
-        {% endfor %}
+        <!-- Creating a container for the videos -->
+        <div class="videos-container">
+            <!-- Iterate through the videos data -->
+            {% for video in videos %}
+                <!-- Each video has its own container -->
+                <div class="video-card">
+                    <!-- Display video title as a link -->
+                    <h3 class="video-title"><a href="/video/{{ video[0] }}">{{ video[1] }}</a></h3>
+                    <!-- Embed videos from YouTube using their links -->
+                    <div class="video-embed">
+                        <iframe src="https://www.youtube.com/embed/{{ video[3].split('watch?v=')[-1].split('/')[0] }}?rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <!-- Display video category and channel -->
+                    <p class="video-info">Category: {{ video[2] }}  |  Channel: {{ video[5] }}</p>
+                    <!-- Display video upload date -->
+                    <p class="video-date">Uploaded on: {{ video[4] }}</p>
+                </div>
+            {% endfor %}
+        </div>
     </section>
-
-</body>
-</html>
