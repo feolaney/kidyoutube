@@ -14,14 +14,16 @@ def run_query(query, params=()):
   conn.commit()
   return cur.fetchall()
 
-# Define app route for home page
-@app.route('/')
-def home():
+# Define app route for home page with a default page number of 1 if not provided
+@app.route('/', defaults={'page': 1})
+@app.route('/<int:page>')
+def home(page):
+    offset = (page - 1) * 12
     # Fetch the latest 10 videos and all distinct channels, render the index page
-    videos = run_query('SELECT * FROM Videos ORDER BY upload_date DESC LIMIT 12')
+    videos = run_query('SELECT * FROM Videos ORDER BY upload_date DESC LIMIT 12 OFFSET ?', (offset,))
     channels = run_query('SELECT DISTINCT channel FROM Videos ORDER BY channel')
     channels = [channel[0] for channel in channels]
-    return render_template('index.html', videos=videos, channels=channels)
+    return render_template('index.html', videos=videos, channels=channels, page=page)
 
 # Define app route for channels page, which returns JSON format channels
 @app.route('/channels')
