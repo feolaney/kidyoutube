@@ -39,3 +39,18 @@
             {% endfor %}
         </div>
     </section>
+     <!-- Pagination section -->
+    <div class="pagination">
+        <!-- Button to go to the previous page if exists -->
+        {% if page > 1 %}
+            <a href="{{ url_for('home', page=page - 1) }}">Previous Page</a>
+        {% endif %}
+        <!-- Display the current page number -->
+        Page {{ page }}
+        <!-- Button to go to the next page if exists -->
+        {% if videos|length >= 12 %}
+            <a href="{{ url_for('home', page=page + 1) }}">Next Page</a>
+        {% endif %}
+    </div>
+</body>
+</html>
