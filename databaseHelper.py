@@ -18,7 +18,7 @@ def run_query(query, params=()):
 @app.route('/')
 def home():
     # Fetch the latest 10 videos and all distinct channels, render the index page
-    videos = run_query('SELECT * FROM Videos ORDER BY upload_date DESC LIMIT 10')
+    videos = run_query('SELECT * FROM Videos ORDER BY upload_date DESC LIMIT 12')
     channels = run_query('SELECT DISTINCT channel FROM Videos ORDER BY channel')
     channels = [channel[0] for channel in channels]
     return render_template('index.html', videos=videos, channels=channels)
