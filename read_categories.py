@@ -20,7 +20,7 @@ def get_categories(database_path):
 
 # Main function to test the get_categories function
 def main():
-    database_path = '/Users/kamila/kidyoutube/kidsvideos.db'
+    database_path = '/Users/slaney/kidyoutube/kidsvideos.db'
     categories = get_categories(database_path)
     # Print categories
     for category in categories:

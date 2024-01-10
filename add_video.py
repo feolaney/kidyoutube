@@ -52,7 +52,7 @@ def main():
         sys.exit(1)
 
     # Specify the database path
-    database_path = '/Users/kamila/kidyoutube/kidsvideos.db'
+    database_path = '/Users/slaney/kidyoutube/kidsvideos.db'
 
     # Call function to add video
     add_video(database_path, title, category, channel, youtubeID)
