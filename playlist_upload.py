@@ -1,11 +1,13 @@
+# Import necessary modules
 import sys
 import sqlite3
 from googleapiclient.discovery import build
 
-# your YouTube Data API key goes here
+# Initialize YouTube Data API
 api_key = 'AIzaSyDF5gjSn9zlZaGskQpchiu0PXdlaATUwIc'
 youtube = build('youtube', 'v3', developerKey=api_key)
 
+# Function to run SQL queries
 def run_query(database_path, query, params=()):
     conn = sqlite3.connect(database_path)
     cur = conn.cursor()
@@ -13,8 +15,9 @@ def run_query(database_path, query, params=()):
     conn.commit()
     return cur.fetchall()
 
+# Function to add video details to database
 def add_video(database_path, title, category, youtubeID, channel):
-    # check if a video with the same youtubeID already exists
+    # Check if a video with the same youtubeID already exists
     result = run_query(database_path, 'SELECT * FROM Videos WHERE youtubeID = ?', (youtubeID,))
     if result:
         return
@@ -22,6 +25,7 @@ def add_video(database_path, title, category, youtubeID, channel):
     query = 'INSERT INTO Videos (title, category, youtube_link, upload_date, channel, youtubeID) VALUES (?, ?, ?, datetime(\'now\'), ?, ?)'
     run_query(database_path, query, (title, category, youtube_link, channel, youtubeID))
 
+# Function to get videos from YouTube playlist
 def get_playlist_videos(playlist_id):
     request = youtube.playlistItems().list(
         part='contentDetails',
@@ -35,6 +39,7 @@ def get_playlist_videos(playlist_id):
         request = youtube.playlistItems().list_next(request, response)
     return video_ids
 
+# Function to get video details
 def get_video_info(video_id):
     request = youtube.videos().list(
         part="snippet",
@@ -50,21 +55,23 @@ def get_video_info(video_id):
         }
     return None
 
+# Main function to handle command line arguments and add videos to database from playlist
 def main():
     if len(sys.argv) < 3:
         print("Usage: python script.py playlist_id category")
         sys.exit(1)
 
-    playlist_id = sys.argv[1]  # get playlist id from the command line
-    category = sys.argv[2]     # get category from the command line
+    playlist_id = sys.argv[1]
+    category = sys.argv[2]
     video_ids = get_playlist_videos(playlist_id)
 
     database_path = '/Users/kamila/kidyoutube/kidsvideos.db'
-  
+
     for video_id in video_ids:
         info = get_video_info(video_id)
         if info is not None:
             add_video(database_path, info['title'], category, video_id, info['channel'])
 
+# Condition to check if this is the main script being executed
 if __name__ == '__main__':
     main()
