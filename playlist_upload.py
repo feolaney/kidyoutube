@@ -2,10 +2,13 @@
 import sys
 import sqlite3
 from googleapiclient.discovery import build
+from google_API_key import get_google_api_key
 
 # Initialize YouTube Data API
-api_key = 'AIzaSyDF5gjSn9zlZaGskQpchiu0PXdlaATUwIc'
+api_key = get_google_api_key()
 youtube = build('youtube', 'v3', developerKey=api_key)
+
+# Continue with the rest of your script...
 
 # Function to run SQL queries
 def run_query(database_path, query, params=()):
@@ -65,7 +68,7 @@ def main():
     category = sys.argv[2]
     video_ids = get_playlist_videos(playlist_id)
 
-    database_path = '/Users/kamila/kidyoutube/kidsvideos.db'
+    database_path = '/Users/slaney/kidyoutube/kidsvideos.db'
 
     for video_id in video_ids:
         info = get_video_info(video_id)
