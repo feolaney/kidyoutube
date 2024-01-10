@@ -1,6 +1,8 @@
+# Import necessary modules
 import sqlite3
 import os
 
+# Define function to run queries
 def run_query(database_path, query, params=()):
     conn = sqlite3.connect(database_path)
     cur = conn.cursor()
@@ -8,12 +10,13 @@ def run_query(database_path, query, params=()):
     rows = cur.fetchall()
     return rows
 
+# Function to retrieve the videos from database
 def get_videos(database_path):
-    # Fetch title, youtubeID, category from Videos ordered by category and upload_date in descending order
     query = 'SELECT title, youtubeID, category FROM Videos ORDER BY category, upload_date DESC'
     videos = run_query(database_path, query)
     return videos
 
+# Function to print the structure of database tables
 def print_table_structure(database_path):
     conn = sqlite3.connect(database_path)
     cursor = conn.cursor()
@@ -30,10 +33,11 @@ def print_table_structure(database_path):
     conn.close()
 
 def main():
+    # Path to the SQLite database
     database_path = '/Users/kamila/kidyoutube/kidsvideos.db'
-    
+
+    # If the database does not exist, create it and set up the Videos table
     if not os.path.exists(database_path):
-        # If file does not exist, create database and tables
         conn = sqlite3.connect(database_path)
         cursor = conn.cursor()
         cursor.execute('''
@@ -48,16 +52,14 @@ def main():
         ''')
         conn.commit()
         print("Database has been created.")
-        
     else:
+        # If it does exist, provide options to display database structure and contents
         print("Database already exists.")
         
-        # Ask user if they want a structure report
         user_input = input("Would you like a report of the database structure? [y/n]: ")
         if user_input.lower() == "y":
             print_table_structure(database_path)
 
-        # Ask user if they want a contents report
         user_input = input("Would you like a report of the database contents? [y/n]: ")
         if user_input.lower() == "y":
             print("\n---\n")
@@ -70,5 +72,6 @@ def main():
                     current_category = category
                 print("Title: {}, YoutubeID: {}".format(title, youtubeID))
 
+# Condition checking if this is the main script being executed
 if __name__ == "__main__":
     main()
