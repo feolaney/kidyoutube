@@ -151,3 +151,5 @@ How to have running session in background with screens:
 - Create selection list for when deleting that will be based on a wildcard search
 
 - Create setup instructions for setting up project and iOS shortcuts
+
+- Adjust CSS, look through reading list
