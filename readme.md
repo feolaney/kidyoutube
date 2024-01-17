@@ -153,3 +153,5 @@ How to have running session in background with screens:
 - Create setup instructions for setting up project and iOS shortcuts
 
 - Adjust CSS, look through reading list
+
+- screenshots 
