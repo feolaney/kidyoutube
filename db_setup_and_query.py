@@ -34,7 +34,7 @@ def print_table_structure(database_path):
 
 def main():
     # Path to the SQLite database
-    database_path = '/Users/slaney/kidyoutube/kidsvideos.db'
+    database_path = '/Users/Shared/kidyoutube/kidsvideos.db'
 
     # If the database does not exist, create it and set up the Videos table
     if not os.path.exists(database_path):

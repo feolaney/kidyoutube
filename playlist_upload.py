@@ -68,7 +68,7 @@ def main():
     category = sys.argv[2]
     video_ids = get_playlist_videos(playlist_id)
 
-    database_path = '/Users/slaney/kidyoutube/kidsvideos.db'
+    database_path = '/Users/Shared/kidyoutube/kidsvideos.db'
 
     for video_id in video_ids:
         info = get_video_info(video_id)

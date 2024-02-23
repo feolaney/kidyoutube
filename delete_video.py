@@ -17,7 +17,7 @@ def main():
         sys.exit(1)
 
     title = sys.argv[1]
-    database_path = '/Users/slaney/kidyoutube/kidsvideos.db'
+    database_path = '/Users/Shared/kidyoutube/kidsvideos.db'
     delete_video(database_path, title)
     print(f"Video with title '{title}' deleted successfully.")
 
