@@ -80,10 +80,10 @@ To set up and run this Flask project on your local system, follow these steps:
 First, clone the repository onto your local system. You can do this by running the following command in your terminal:
 
 ```
-git clone https://github.com/your-repo-url/kidyoutube.git
+git clone https://github.com/your-repo-url/.kidyoutube.git
 ```
 
-Remember to replace "`https://github.com/your-repo-url/kidyoutube.git`" with the URL of this actual GitHub repository.
+Remember to replace "`https://github.com/your-repo-url/.kidyoutube.git`" with the URL of this actual GitHub repository.
 
 #### 2. Database Setup
 

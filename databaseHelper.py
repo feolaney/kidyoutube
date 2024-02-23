@@ -8,7 +8,7 @@ app = Flask(__name__)
 # Function to execute SQL queries in the SQLite database
 def run_query(query, params=()):
   # Connect to the database and fetch all rows from executing the SQL query
-  conn = sqlite3.connect('/Users/Shared/kidyoutube/kidsvideos.db')
+  conn = sqlite3.connect('/Users/Shared/.kidyoutube/kidsvideos.db')
   cur = conn.cursor()
   cur.execute(query, params)
   conn.commit()
