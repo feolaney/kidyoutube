@@ -144,14 +144,12 @@ How to have running session in background with screens:
 
 ## TODO:
 
-  
-
 - Move iOS Shortcut functionality into Python scripts for add/delete
-
 - Create selection list for when deleting that will be based on a wildcard search
-
 - Create setup instructions for setting up project and iOS shortcuts
-
 - Adjust CSS, look through reading list
-
 - screenshots 
+- Filter and sort for all pages except new videos page
+- Build save spot to save where someone was watching a video last
+	- Save
+	- Load
