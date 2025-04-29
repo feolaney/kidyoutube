@@ -1,5 +1,6 @@
 # Import sqlite3 module to interact with SQLite database
 import sqlite3
+import os
 
 # The run_query function takes as arguments a path to the database file and an SQL query string
 # Opens a connection to the SQLite database file and returns all rows from executing the SQL query
@@ -20,7 +21,8 @@ def get_categories(database_path):
 
 # Main function to test the get_categories function
 def main():
-    database_path = '/Users/Shared/.kidyoutube/kidsvideos.db'
+    BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+    database_path = os.path.join(BASE_DIR, 'kidsvideos.db')
     categories = get_categories(database_path)
     # Print categories
     for category in categories:
