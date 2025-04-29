@@ -1,31 +1,44 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <!-- Include CSS stylesheet -->
-        <link rel="stylesheet" type="text/css" href="/static/styles.css">
-        <!-- Include jQuery -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <!-- Include your scripts.js -->
-        <script src="/static/scripts.js"></script>
-        <!-- Set the page title -->
+  <head>
+    <!-- Include CSS stylesheet -->
+    <link rel="stylesheet" type="text/css" href="/static/styles.css">
+    <!-- Include jQuery (if you need it elsewhere) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Include your scripts.js -->
+    <script src="/static/scripts.js"></script>
+
     <title>{{ title }}</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <h1>Learning Videos</h1>
-        {% include 'navbar.html' %}
+      <h1>Learning Videos</h1>
+      {% include 'navbar.html' %}
     </header>
-    <!-- Display the video title -->
-    <h1>{{ title }}</h1>
-    <!-- Display the video category -->
+
+    <!-- 1) RESPONSIVE 16:9 WRAPPER -->
+    <div class="video-wrapper">
+      <iframe
+        src="https://www.youtube.com/embed/{{ video_id }}?rel=0"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    <!-- 2) OR: TRUE FULL-VIEWPORT (uncomment to use instead) -->
+    <!--
+    <iframe
+      class="full-window-video"
+      src="https://www.youtube.com/embed/{{ video_id }}?rel=0"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+    -->
+
     <p>Category: {{ category }}</p>
-    <!-- Embed the video player using the video_id -->
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ video_id }}?rel=0" frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-    allowfullscreen></iframe>
-    <!-- Display the video upload date -->
     <p>Date Uploaded: {{ upload_date }}</p>
-    <!-- Back button to return to previous page -->
     <a href="/">Back</a>
-</body>
+  </body>
 </html>
