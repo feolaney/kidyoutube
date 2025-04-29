@@ -1,14 +1,19 @@
 # Import necessary modules for Flask app
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 import sqlite3
+import os
 
 # Initialize Flask app
 app = Flask(__name__)
 
+# Determine the absolute path to the DB file
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+DB_PATH = os.path.join(BASE_DIR, 'kidsvideos.db')
+
 # Function to execute SQL queries in the SQLite database
 def run_query(query, params=()):
   # Connect to the database and fetch all rows from executing the SQL query
-  conn = sqlite3.connect('/Users/Shared/.kidyoutube/kidsvideos.db')
+  conn = sqlite3.connect(DB_PATH)
   cur = conn.cursor()
   cur.execute(query, params)
   conn.commit()
