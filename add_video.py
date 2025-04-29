@@ -1,6 +1,7 @@
 # Import necessary modules
 import sqlite3
 import sys
+import os
 
 # Function to execute SQL queries on the SQLite database
 def run_query(database_path, query, params=()):
@@ -52,7 +53,8 @@ def main():
         sys.exit(1)
 
     # Specify the database path
-    database_path = '/Users/Shared/.kidyoutube/kidsvideos.db'
+    BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+    database_path = os.path.join(BASE_DIR, 'kidsvideos.db')
 
     # Call function to add video
     add_video(database_path, title, category, channel, youtubeID)
